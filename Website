@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bronchoscopy Referral Booking</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2em; }
+    h1 { color: #0077b6; }
+    .container { max-width: 700px; margin: auto; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Bronchoscopy Referral Booking</h1>
+    <p>
+      Please use the calendar below to book a bronchoscopy slot at our center. Fill in all required details.
+      For equipment requests, <a href="#equipment">click here</a>.
+    </p>
+    <!-- Calendly Inline Widget Begin -->
+    <div class="calendly-inline-widget" data-url="https://calendly.com/YOUR-USERNAME/YOUR-EVENT" style="min-width:320px;height:630px;"></div>
+    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+    <!-- Calendly Inline Widget End -->
+
+    <h2 id="equipment">Equipment Request</h2>
+    <p>For equipment requests, please <a href="https://forms.gle/YOUR-GOOGLE-FORM" target="_blank">fill out this form</a>.</p>
+  </div>
+</body>
+</html>
