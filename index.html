@@ -5,25 +5,272 @@
   <title>Bronchoscopy Referral Booking</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    body { font-family: Arial, sans-serif; margin: 2em; }
-    h1 { color: #0077b6; }
-    .container { max-width: 700px; margin: auto; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      min-height: 100vh;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #0077b6 0%, #005a8b 100%);
+      color: white;
+      padding: 2rem 0;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      font-weight: 300;
+    }
+
+    .header p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    .nav {
+      background: white;
+      padding: 1rem 0;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: #0077b6;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      background: #0077b6;
+      color: white;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .section {
+      background: white;
+      border-radius: 10px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .section:hover {
+      transform: translateY(-2px);
+    }
+
+    .section h2 {
+      color: #0077b6;
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+      border-bottom: 2px solid #e0e0e0;
+      padding-bottom: 0.5rem;
+    }
+
+    .section p {
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+      color: #555;
+    }
+
+    .calendly-container {
+      background: #f8f9fa;
+      border-radius: 8px;
+      padding: 1rem;
+      margin: 1rem 0;
+    }
+
+    .form-container {
+      background: #f8f9fa;
+      border-radius: 8px;
+      padding: 1rem;
+      margin: 1rem 0;
+      min-height: 600px;
+    }
+
+    .form-container iframe {
+      width: 100%;
+      height: 600px;
+      border: none;
+      border-radius: 5px;
+    }
+
+    .info-box {
+      background: #e3f2fd;
+      border-left: 4px solid #0077b6;
+      padding: 1rem;
+      margin: 1rem 0;
+      border-radius: 0 5px 5px 0;
+    }
+
+    .info-box h3 {
+      color: #0077b6;
+      margin-bottom: 0.5rem;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .btn {
+      background: #0077b6;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn:hover {
+      background: #005a8b;
+    }
+
+    @media (max-width: 768px) {
+      .header h1 {
+        font-size: 2rem;
+      }
+      
+      .nav-container {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      
+      .container {
+        padding: 1rem;
+      }
+      
+      .section {
+        padding: 1.5rem;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="container">
+  <div class="header">
     <h1>Bronchoscopy Referral Booking</h1>
-    <p>
-      Please use the calendar below to book a bronchoscopy slot at our center. Fill in all required details.
-      For equipment requests, <a href="#equipment">click here</a>.
-    </p>
-    <!-- Calendly Inline Widget Begin -->
-    <div class="calendly-inline-widget" data-url="https://calendly.com/kumar-aradhana/bronchoscopy-booking" style="min-width:320px;height:630px;"></div>
-    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-    <!-- Calendly Inline Widget End -->
-
-    <h2 id="equipment">Equipment Request</h2>
-    <p>For equipment requests, please <a href="<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdBZ5jPwr5bZwqABwctfdqFpcRwaHPjl8uiqS-saxNyd_qyoA/viewform?embedded=true" width="640" height="1824" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>"fill out this form</a>.</p>
+    <p>Professional Medical Services Center</p>
   </div>
+
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="#booking" class="nav-link active" onclick="showSection('booking')">Referral Booking</a>
+      <a href="#equipment" class="nav-link" onclick="showSection('equipment')">Equipment Request</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <!-- Referral Booking Section -->
+    <div id="booking" class="section">
+      <h2>Bronchoscopy Referral Booking</h2>
+      <p>
+        Welcome to our bronchoscopy referral booking system. Please use the calendar below to schedule your appointment. 
+        Our team will review your booking and confirm the details.
+      </p>
+      
+      <div class="info-box">
+        <h3>Important Information</h3>
+        <p>• Please ensure all required details are filled accurately</p>
+        <p>• You will receive a confirmation email after booking</p>
+        <p>• For urgent cases, please contact us directly</p>
+      </div>
+
+      <div class="calendly-container">
+        <!-- Calendly Inline Widget Begin -->
+        <div class="calendly-inline-widget" data-url="https://calendly.com/kumar-aradhana/bronchoscopy-booking" style="min-width:320px;height:630px;"></div>
+        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+        <!-- Calendly Inline Widget End -->
+      </div>
+    </div>
+
+    <!-- Equipment Request Section -->
+    <div id="equipment" class="section hidden">
+      <h2>Equipment Request Form</h2>
+      <p>
+        Please use the form below to request specific equipment for your bronchoscopy procedure. 
+        All requests will be reviewed and confirmed based on availability.
+      </p>
+      
+      <div class="info-box">
+        <h3>Equipment Request Guidelines</h3>
+        <p>• Please specify the exact equipment needed</p>
+        <p>• Include any special requirements or specifications</p>
+        <p>• Requests should be submitted at least 48 hours in advance</p>
+      </div>
+
+      <div class="form-container">
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdBZ5jPwr5bZwqABwctfdqFpcRwaHPjl8uiqS-saxNyd_qyoA/viewform?embedded=true" 
+                width="640" height="1824" frameborder="0" marginheight="0" marginwidth="0">
+          Loading…
+        </iframe>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function showSection(sectionId) {
+      // Hide all sections
+      const sections = document.querySelectorAll('.section');
+      sections.forEach(section => {
+        section.classList.add('hidden');
+      });
+      
+      // Show the selected section
+      const selectedSection = document.getElementById(sectionId);
+      if (selectedSection) {
+        selectedSection.classList.remove('hidden');
+      }
+      
+      // Update navigation active state
+      const navLinks = document.querySelectorAll('.nav-link');
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+      });
+      
+      // Add active class to clicked link
+      event.target.classList.add('active');
+    }
+
+    // Handle direct links to sections
+    window.addEventListener('load', function() {
+      const hash = window.location.hash.substring(1);
+      if (hash) {
+        showSection(hash);
+      }
+    });
+  </script>
 </body>
 </html>
